@@ -1,0 +1,303 @@
+
+# State file created:  2025/07/28 16:57:34
+# Build 23.1 2022-11-25T14:31:12.124816
+
+FLOW: Flow Analysis 1
+  DOMAIN: fluid
+    Coord Frame = Coord 0
+    Domain Type = Fluid
+    Location = fluid
+    BOUNDARY: cool
+      Boundary Type = SYMMETRY
+      Location = cool back,cool front
+    END
+    BOUNDARY: inlet cool
+      Boundary Type = INLET
+      Location = inlet cool
+      BOUNDARY CONDITIONS:
+        FLOW DIRECTION:
+          Option = Normal to Boundary Condition
+        END
+        FLOW REGIME:
+          Option = Subsonic
+        END
+        HEAT TRANSFER:
+          Option = Static Temperature
+          Static Temperature = 200 [K]
+        END
+        MASS AND MOMENTUM:
+          Mass Flow Rate = 0.000797379 [kg s^-1]
+          Mass Flow Rate Area = As Specified
+          Option = Mass Flow Rate
+        END
+        TURBULENCE:
+          Option = Medium Intensity and Eddy Viscosity Ratio
+        END
+      END
+    END
+    BOUNDARY: inlet main
+      Boundary Type = INLET
+      Location = inlet main
+      BOUNDARY CONDITIONS:
+        FLOW REGIME:
+          Option = Subsonic
+        END
+        HEAT TRANSFER:
+          Option = Static Temperature
+          Static Temperature = 300 [K]
+        END
+        MASS AND MOMENTUM:
+          Normal Speed = 17.24750 [m s^-1]
+          Option = Normal Speed
+        END
+        TURBULENCE:
+          Option = Medium Intensity and Eddy Viscosity Ratio
+        END
+      END
+    END
+    BOUNDARY: outlet main
+      Boundary Type = OUTLET
+      Location = outlet main
+      BOUNDARY CONDITIONS:
+        FLOW REGIME:
+          Option = Subsonic
+        END
+        MASS AND MOMENTUM:
+          Option = Static Pressure
+          Relative Pressure = 1 [atm]
+        END
+      END
+    END
+    BOUNDARY: periodic cool Side 1
+      Boundary Type = INTERFACE
+      Location = periodic cool left
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: periodic cool Side 2
+      Boundary Type = INTERFACE
+      Location = periodic cool right
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: periodic main Side 1
+      Boundary Type = INTERFACE
+      Location = periodic main left
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: periodic main Side 2
+      Boundary Type = INTERFACE
+      Location = periodic main right
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: trip
+      Boundary Type = WALL
+      Location = wall trip
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: wall
+      Boundary Type = WALL
+      Location = wall main up,wall cool up,wall hole
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Rough Wall
+          Sand Grain Roughness Height = 0.0385 [mm]
+        END
+      END
+    END
+    BOUNDARY: wall main down
+      Boundary Type = WALL
+      Location = wall main down
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Rough Wall
+          Sand Grain Roughness Height = 0.385 [mm]
+        END
+      END
+    END
+    BOUNDARY: wall main down else
+      Boundary Type = WALL
+      Location = wall main down else
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Rough Wall
+          Sand Grain Roughness Height = 0.385 [mm]
+        END
+      END
+    END
+    DOMAIN MODELS:
+      BUOYANCY MODEL:
+        Option = Non Buoyant
+      END
+      DOMAIN MOTION:
+        Option = Stationary
+      END
+      MESH DEFORMATION:
+        Option = None
+      END
+      REFERENCE PRESSURE:
+        Reference Pressure = 0 [atm]
+      END
+    END
+    FLUID DEFINITION: Fluid 1
+      Material = Air Ideal Gas
+      Option = Material Library
+      MORPHOLOGY:
+        Option = Continuous Fluid
+      END
+    END
+    FLUID MODELS:
+      COMBUSTION MODEL:
+        Option = None
+      END
+      HEAT TRANSFER MODEL:
+        Include Viscous Dissipation Term = Off
+        Option = Thermal Energy
+      END
+      THERMAL RADIATION MODEL:
+        Option = None
+      END
+      TURBULENCE MODEL:
+        A1 Coefficient = 0.276042
+        BetaStar Coefficient = 0.119642
+        Option = SST
+        K EPSILON REGIME:
+          K COEFFICIENTS:
+            TURBULENT FLUX CLOSURE:
+              Option = Eddy Diffusivity
+              Turbulent Schmidt Number =  0.345309
+            END
+          END
+          OMEGA COEFFICIENTS:
+            Beta Coefficient =  0.06771
+            TURBULENT FLUX CLOSURE:
+              Option = Eddy Diffusivity
+              Turbulent Schmidt Number =  1.124012
+            END
+          END
+        END
+        K OMEGA REGIME:
+          K COEFFICIENTS:
+            TURBULENT FLUX CLOSURE:
+              Option = Eddy Diffusivity
+              Turbulent Schmidt Number =  1.37297
+            END
+          END
+          OMEGA COEFFICIENTS:
+            Beta Coefficient =  0.393352
+            TURBULENT FLUX CLOSURE:
+              Option = Eddy Diffusivity
+              Turbulent Schmidt Number =  1.515753
+            END
+          END
+        END
+        TRANSITIONAL TURBULENCE:
+          Option = Gamma Theta Model
+          ROUGHNESS CORRELATION:
+            Geometric Roughness Height = 0.11 [m]
+            Option = Specified Roughness
+          END
+          TRANSITION ONSET CORRELATION:
+            Option = Langtry Menter
+          END
+        END
+      END
+      TURBULENT WALL FUNCTIONS:
+        Option = Automatic
+      END
+    END
+    INITIALISATION:
+      Option = Automatic
+      INITIAL CONDITIONS:
+        Velocity Type = Cartesian
+        CARTESIAN VELOCITY COMPONENTS:
+          Option = Automatic with Value
+          U = 17.2475 [m s^-1]
+          V = 0 [m s^-1]
+          W = 0 [m s^-1]
+        END
+        STATIC PRESSURE:
+          Option = Automatic with Value
+          Relative Pressure = 1 [atm]
+        END
+        TEMPERATURE:
+          Option = Automatic with Value
+          Temperature = 300 [K]
+        END
+        TURBULENCE INITIAL CONDITIONS:
+          Option = Medium Intensity and Eddy Viscosity Ratio
+        END
+      END
+    END
+  END
+END
+COMMAND FILE:
+  Version = 23.1
+END
+
